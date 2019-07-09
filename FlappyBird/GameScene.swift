@@ -89,6 +89,16 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             // スプライトにアクションを設定する
             sprite.run(itemAnimation)
             
+            // スプライトに物理演算を設定する
+            sprite.physicsBody = SKPhysicsBody(rectangleOf: itemTexture.size())   
+            
+            // 衝突の時に動かないように設定する
+            sprite.physicsBody?.isDynamic = false
+            
+            //スコア用
+            sprite.physicsBody?.categoryBitMask = self.scoreCategory
+            sprite.physicsBody?.contactTestBitMask = self.birdCategory
+            
             //スプライトを追加する
             Item.addChild(sprite)
             
@@ -97,7 +107,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         })
         
         // 次の壁作成までの時間待ちのアクションを作成
-        let waitAnimation = SKAction.wait(forDuration: 6)
+        let waitAnimation = SKAction.wait(forDuration: 5)
         
         // 壁を作成->時間待ち->壁を作成を無限に繰り返すアクションを作成
         let repeatForeverAnimation = SKAction.repeatForever(SKAction.sequence([createItem, waitAnimation]))
