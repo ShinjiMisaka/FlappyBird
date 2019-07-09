@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import AVFoundation
 
 class GameScene: SKScene,SKPhysicsContactDelegate {
     
@@ -59,6 +60,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         // Do any additional setup after loading the view.
         
     }
+    
     func setupItem(){
         // 画像を読み込む
         let itemTexture = SKTexture(imageNamed: "heart")
@@ -157,11 +159,17 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             }
             
         } else if (contact.bodyA.categoryBitMask & itemCategory) == itemCategory || (contact.bodyB.categoryBitMask & itemCategory) == itemCategory {
-            // アイテムスコア用の物体と衝突した
+            // アイテムスコア用の物体と衝突
             print("itemScoreUp")
             itemscore += 1
             itemscoreLabelNode.text = "ItemScore:\(itemscore)"
             contact.bodyA.node?.removeFromParent()
+            // 音楽を追加
+            let play = SKAudioNode(fileNamed:"music.mp3")
+            self.addChild(play)
+            
+            
+            
         }
         else{
             // 壁か地面と衝突した

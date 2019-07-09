@@ -31,6 +31,7 @@
 		D05628D322D4C5E900E0F416 /* heart@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = D05628D022D4C5E900E0F416 /* heart@x2.png */; };
 		D05628D422D4C5E900E0F416 /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = D05628D122D4C5E900E0F416 /* heart.png */; };
 		D05628D522D4C5E900E0F416 /* heart@x3.png in Resources */ = {isa = PBXBuildFile; fileRef = D05628D222D4C5E900E0F416 /* heart@x3.png */; };
+		D05628D722D50A3200E0F416 /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D05628D622D50A3200E0F416 /* music.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		D05628D022D4C5E900E0F416 /* heart@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart@x2.png"; sourceTree = "<group>"; };
 		D05628D122D4C5E900E0F416 /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
 		D05628D222D4C5E900E0F416 /* heart@x3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heart@x3.png"; sourceTree = "<group>"; };
+		D05628D622D50A3200E0F416 /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				D01FA2CA22D32E1000C3F5A7 /* Main.storyboard */,
 				D01FA2F622D333B100C3F5A7 /* GameScene.swift */,
 				D01FA2CD22D32E1100C3F5A7 /* Assets.xcassets */,
+				D05628D622D50A3200E0F416 /* music.mp3 */,
 				D05628D122D4C5E900E0F416 /* heart.png */,
 				D05628D022D4C5E900E0F416 /* heart@x2.png */,
 				D05628D222D4C5E900E0F416 /* heart@x3.png */,
@@ -189,6 +192,7 @@
 				D01FA2F522D332BD00C3F5A7 /* bird_b@2x.png in Resources */,
 				D01FA2D122D32E1100C3F5A7 /* LaunchScreen.storyboard in Resources */,
 				D01FA2F122D332BD00C3F5A7 /* ground@3x.png in Resources */,
+				D05628D722D50A3200E0F416 /* music.mp3 in Resources */,
 				D01FA2EA22D332BD00C3F5A7 /* bird_a.png in Resources */,
 				D01FA2CE22D32E1100C3F5A7 /* Assets.xcassets in Resources */,
 				D01FA2F022D332BD00C3F5A7 /* ground@2x.png in Resources */,
