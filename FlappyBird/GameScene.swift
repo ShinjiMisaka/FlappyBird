@@ -48,10 +48,61 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         setupCloud()
         setupWall()
         setupBird()
+        setupItem()
         
         setupScoreLabel()
 
         // Do any additional setup after loading the view.
+        
+    }
+    func setupItem(){
+        // 画像を読み込む
+        let itemTexture = SKTexture(imageNamed: "heart")
+        itemTexture.filteringMode = .linear
+        
+        // 移動する距離を計算
+        let movingDistance = CGFloat(self.frame.size.width + itemTexture.size().width + self.frame.size.width)
+        
+        // 画面外まで移動するアクションを作成
+        let moveItem = SKAction.moveBy(x: -movingDistance, y: 0, duration:4)
+        
+        // 自身を取り除くアクションを作成
+        let removeItem = SKAction.removeFromParent()
+        
+        // 2つのアニメーションを順に実行するアクションを作成
+        let itemAnimation = SKAction.sequence([moveItem, removeItem])
+        
+        
+        //アイテム生成アクションの作成
+        let createItem = SKAction.run({
+            let Item = SKNode()
+            let wallTexture = SKTexture(imageNamed: "wall")
+            Item.position = CGPoint(x: self.frame.size.width + wallTexture.size().width / 2, y: 0)
+            Item.zPosition = -50
+            
+            //スプライト作成
+            let sprite = SKSpriteNode(texture: itemTexture)
+            
+            // スプライトの表示する位置を指定する
+            sprite.position = CGPoint(x:0,y:300)
+            
+            // スプライトにアクションを設定する
+            sprite.run(itemAnimation)
+            
+            //スプライトを追加する
+            Item.addChild(sprite)
+            
+            self.scrollNode.addChild(Item)
+            
+        })
+        
+        // 次の壁作成までの時間待ちのアクションを作成
+        let waitAnimation = SKAction.wait(forDuration: 6)
+        
+        // 壁を作成->時間待ち->壁を作成を無限に繰り返すアクションを作成
+        let repeatForeverAnimation = SKAction.repeatForever(SKAction.sequence([createItem, waitAnimation]))
+        
+        scrollNode.run(repeatForeverAnimation)
         
     }
     
