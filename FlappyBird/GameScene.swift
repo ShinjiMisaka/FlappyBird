@@ -131,6 +131,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     
     // SKPhysicsContactDelegateのメソッド。衝突したときに呼ばれる
     func didBegin(_ contact: SKPhysicsContact) {
+        var firstBody, secondBody: SKPhysicsBody
         // ゲームオーバーのときは何もしない
         if scrollNode.speed <= 0 {
             return
@@ -141,6 +142,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             print("ScoreUp")
             score += 1
             scoreLabelNode.text = "Score:\(score)"
+            contact.bodyA.node?.removeFromParent()
             
             // ベストスコア更新か確認する
             var bestScore = userDefaults.integer(forKey: "BEST")
