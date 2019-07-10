@@ -9,11 +9,13 @@
 import SpriteKit
 import AVFoundation
 
-class GameScene: SKScene,SKPhysicsContactDelegate {
+class GameScene: SKScene,SKPhysicsContactDelegate{
     
     var scrollNode:SKNode!
     var wallNode:SKNode!
     var bird:SKSpriteNode!
+    var player:AVAudioPlayer?
+    
     
     // 衝突判定カテゴリー
     let birdCategory: UInt32 = 1 << 0       // 0...00001
@@ -31,6 +33,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     let userDefaults:UserDefaults = UserDefaults.standard
 
     override func didMove(to view: SKView) {
+        
         
         // 重力を設定
         physicsWorld.gravity = CGVector(dx: 0, dy: -4)
@@ -165,8 +168,15 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             itemscoreLabelNode.text = "ItemScore:\(itemscore)"
             contact.bodyA.node?.removeFromParent()
             // 音楽を追加
-            let play = SKAudioNode(fileNamed:"music.mp3")
-            self.addChild(play)
+            // 再生する音声ファイルを指定する
+            let soundURL = Bundle.main.url(forResource: "music", withExtension: "mp3")
+            do {
+                // 効果音を鳴らす
+                player = try AVAudioPlayer(contentsOf: soundURL!)
+                player?.play()
+            } catch {
+                print("error...")
+            }
             
             
             
